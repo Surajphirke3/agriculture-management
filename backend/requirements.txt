@@ -14,3 +14,4 @@ sentence-transformers
 mistralai
 mistral
 flask_cors
+flask_pymongo
