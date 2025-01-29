@@ -5,3 +5,11 @@ python-dotenv
 marshmallow
 pyjwt
 tensorflow
+chromadb
+langchain_community
+langchain
+langchain_mistralai
+sentence_transformers
+sentence-transformers
+mistralai
+mistral
