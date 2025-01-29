@@ -30,6 +30,8 @@ ids = [f"doc_{i}" for i in range(len(embeddings))]
 
 # Define the maximum batch size
 max_batch_size = 5000
+
+# Not in use
 '''
 # Split the data into smaller batches
 for i in range(0, len(embeddings), max_batch_size):
@@ -52,8 +54,9 @@ response = qa_pipeline(Query)
 print(response)'''
 
 
+'''
 # Set your Mistral AI API key (Replace "your-api-key" with your actual key)
-os.environ["MISTRAL_API_KEY"] = "236mWUjffs24Rg2pkQNfQiJNxg9EUxNO"
+# os.environ["MISTRAL_API_KEY"] = "236mWUjffs24Rg2pkQNfQiJNxg9EUxNO"
 
 def generate_response(prompt: str, model_name: str = "mistral-small", temperature: float = 0.7) -> str:
     """
@@ -81,13 +84,13 @@ def generate_response(prompt: str, model_name: str = "mistral-small", temperatur
     except Exception as e:
         return f"Error: {e}"
 '''
-prompt = "which crops to grow in low moisture and harsh winter season?"
+# prompt = "which crops to grow in low moisture and harsh winter season?"
 
-# Call the function
-response = generate_response(prompt=prompt)
+# # Call the function
+# response = generate_response(prompt=prompt)
 
-# Display the response
-print("Generated Response:", response)
+# # Display the response
+# print("Generated Response:", response)
 '''
 
 assistant_bp = Blueprint("assistant", __name__)
@@ -97,4 +100,4 @@ def chatbot_route():
     data = request.json
     prompt = data.get("prompt")
     result = generate_response(prompt=prompt)
-    return jsonify(result)
+    return jsonify(result)'''
