@@ -4,7 +4,7 @@ flask-restful
 python-dotenv
 marshmallow
 pyjwt
-tensorflow
+# tensorflow
 chromadb
 langchain_community
 langchain
