@@ -3,9 +3,6 @@ from app.db import get_items_collection
 from flask import request, jsonify
 from bson import ObjectId
 
-from app.db import get_items_collection
-from flask import jsonify
-from bson import ObjectId
 
 def add_item(item):
     items_collection = get_items_collection()
