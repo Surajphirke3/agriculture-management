@@ -7,8 +7,8 @@ from app.inventory.routes.user_routes import auth_bp
 from app.inventory.routes.item_routes import inventory_bp
 # from app.chatbot_routes import assistant_bp
 from app.assistant.chatbot import assistant_bp
-from app.Esp_Api import esp_api
 from app.waste_management.routes import waste_management_bp
+from app.Esp_Api import esp_api
 
 def create_app():
     app = Flask(__name__)

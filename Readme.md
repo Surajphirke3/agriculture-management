@@ -23,7 +23,7 @@ CropChain is an innovative agriculture management system designed to bridge the 
 ---
 
 ## 🎥 Video Demo
-[**Watch Demo Here**](#) *(Add your video link here)*
+[**Watch Demo Here**](#) [*(Add your video link here)*](https://drive.google.com/file/d/1nwzByh_xk3gq9kVovF9UP7HRyNM4w_z4/view?usp=sharing)
 
 ---
 

@@ -15,3 +15,5 @@ mistralai
 mistral
 flask_cors
 flask_pymongo
+streamlit
+matplotlib
