@@ -23,17 +23,17 @@ CropChain is an innovative agriculture management system designed to bridge the 
 
 ## 🎥 Video Demo
 
-[Watch the Demo](#) *(Add your video link here)*
+[Watch the Demo](#) *(https://drive.google.com/file/d/1nwzByh_xk3gq9kVovF9UP7HRyNM4w_z4/view?usp=drive_link)*
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React.js, HTML, CSS, JavaScript
-- **Backend**: Node.js, Express.js
+- **Frontend**: Next.js,typescript,tailwind css
+- **Backend**: python(flask)
 - **Database**: MongoDB
-- **AI**: Chatbot integration for real-time assistance
-- **Hosting & Deployment**: Firebase / AWS / Heroku
+- **AI**: Chatbot integration by our own RAG model
+- **Hosting & Deployment**:  Heroku
 
 ---
 
