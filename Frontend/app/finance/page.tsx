@@ -15,6 +15,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { Bar, BarChart } from "recharts"
+ 
+import { ChartConfig, ChartContainer } from "@/components/ui/chart"
 import {
   LineChart,
   Line,
@@ -83,6 +86,17 @@ export default function FinancePage() {
     },
   ]
 
+  const chartConfig = {
+    desktop: {
+      label: "Desktop",
+      color: "#2563eb",
+    },
+    mobile: {
+      label: "Mobile",
+      color: "#60a5fa",
+    },
+  } satisfies ChartConfig
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -127,18 +141,12 @@ export default function FinancePage() {
             <h3 className="text-lg font-semibold mb-4">Revenue Overview</h3>
             <div className="h-[300px]">
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={revenueData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="month" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Line
-                    type="monotone"
-                    dataKey="revenue"
-                    stroke="hsl(var(--chart-1))"
-                  />
-                </LineChart>
+              <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+      <BarChart accessibilityLayer data={revenueData}>
+        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+        <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+      </BarChart>
+    </ChartContainer>
               </ResponsiveContainer>
             </div>
           </Card>

@@ -44,8 +44,7 @@ const shipments = [
     destination: "Whole Foods Market, ",
     status: "In Transit",
     eta: "2024-03-15",
-    temperature: "4°C",
-    humidity: "85%",
+   
     alerts: "None",
   },
   {
@@ -56,8 +55,7 @@ const shipments = [
     destination: "Local Market Chain, ",
     status: "Delayed",
     eta: "2024-03-14",
-    temperature: "5°C",
-    humidity: "82%",
+   
     alerts: "Temperature Alert",
   },
 ]
@@ -196,7 +194,7 @@ export default function SupplyChainPage() {
                     <TableHead>Destination</TableHead>
                     <TableHead>Status</TableHead>
                     <TableHead>ETA</TableHead>
-                    <TableHead>Conditions</TableHead>
+                    
                     <TableHead>Alerts</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -215,9 +213,7 @@ export default function SupplyChainPage() {
                         </Badge>
                       </TableCell>
                       <TableCell>{shipment.eta}</TableCell>
-                      <TableCell>
-                        {shipment.temperature} | {shipment.humidity}
-                      </TableCell>
+                   
                       <TableCell>
                         <Badge
                           variant={shipment.alerts === "None" ? "secondary" : "destructive"}

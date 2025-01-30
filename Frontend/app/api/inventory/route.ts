@@ -1,36 +1,78 @@
-"use server"
+import axios from "axios"
 
-import { NextResponse } from 'next/server'
+// Define the base URL for your API
+const BASE_URL = "http://192.168.137.1:5000"
 
-export async function GET() {
+// Define the type for inventory items
+export interface InventoryItem {
+  id?: string
+  name: string
+  quantity: number
+  unit: string
+  status: string
+  expiryDate: string
+  userId: string
+  location: string
+  alerts: string
+}
+
+// Define the type for API response
+interface ApiResponse<T> {
+  data: T
+  message: string
+}
+
+// Fetch all items by user
+export const fetchItemsByUser = async (userId: string): Promise<InventoryItem[]> => {
   try {
-    // Mock data - replace with actual database call
-    const inventory = [
-      {
-        id: 1,
-        name: "Organic Tomatoes",
-        quantity: 500,
-        unit: "kg",
-        status: "In Stock",
-        expiryDate: "2024-05-15",
-        location: "Warehouse A",
-        alerts: "Low Stock",
-      },
-      // Add more items as needed
-    ]
-
-    return NextResponse.json({ data: inventory })
+    const response = await axios.get<ApiResponse<InventoryItem[]>>(`${BASE_URL}/api/inventory/items?userId=${userId}`)
+    return response.data.data
   } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch inventory" }, { status: 500 })
+    console.error("Error fetching items:", error)
+    throw error
   }
 }
 
-export async function POST(request: Request) {
+// Add a new item
+export const addItem = async (item: InventoryItem): Promise<InventoryItem> => {
   try {
-    const body = await request.json()
-    // Validate and save to database
-    return NextResponse.json({ message: "Item added successfully" })
+    const response = await axios.post<ApiResponse<InventoryItem>>(`${BASE_URL}/api/inventory/items`, item)
+    return response.data.data
   } catch (error) {
-    return NextResponse.json({ error: "Failed to add item" }, { status: 500 })
+    console.error("Error adding item:", error)
+    throw error
   }
 }
+
+// Get item by ID
+export const getItemById = async (id: string): Promise<InventoryItem> => {
+  try {
+    const response = await axios.get<ApiResponse<InventoryItem>>(`${BASE_URL}/api/inventory/items/${id}`)
+    return response.data.data
+  } catch (error) {
+    console.error("Error fetching item:", error)
+    throw error
+  }
+}
+
+// Update an item
+export const updateItem = async (id: string, item: InventoryItem): Promise<InventoryItem> => {
+  try {
+    const response = await axios.put<ApiResponse<InventoryItem>>(`${BASE_URL}/api/inventory/items/${id}`, item)
+    return response.data.data
+  } catch (error) {
+    console.error("Error updating item:", error)
+    throw error
+  }
+}
+
+// Delete an item
+export const deleteItem = async (id: string): Promise<void> => {
+  try {
+    await axios.delete(`${BASE_URL}/api/inventory/items/${id}`)
+  } catch (error) {
+    console.error("Error deleting item:", error)
+    throw error
+  }
+}
+
