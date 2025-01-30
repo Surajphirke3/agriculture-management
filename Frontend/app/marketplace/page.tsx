@@ -18,20 +18,200 @@ import { Search, Filter, ShoppingCart } from "lucide-react"
 
 // Mock data for demonstration
 const products = [
-  {
-    id: 1,
-    name: "Fresh Organic Tomatoes",
-    price: 299,
-    unit: "kg",
-    seller: "Green Valley Farms",
-    rating: 4.5,
-    location: "ind",
-    image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&q=80&w=300&h=300",
-    organic: true,
-    available: 500,
-
-
-  },
+    {
+      id: 1,
+      name: "Fresh Organic Tomatoes",
+      price: 299,
+      unit: "kg",
+      seller: "Green Valley Farms",
+      rating: 4.5,
+      location: "ind",
+      image: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&q=80&w=300&h=300",
+      organic: true,
+      available: 500,
+    },
+    {
+      id: 2,
+      name: "Golden Honey Mangoes",
+      price: 499,
+      unit: "dozen",
+      seller: "Tropical Harvest",
+      rating: 4.7,
+      location: "ind",
+      image: "https://unsplash.com/photos/green-and-brown-round-fruit-on-brown-wooden-round-table-e51CJtEkPoI?auto=format&fit=crop&q=80&w=300&h=300",
+      organic: true,
+      available: 200,
+    },
+    {
+      id: 3,
+      name: "Organic Spinach Bunch",
+      price: 99,
+      unit: "bunch",
+      seller: "Fresh Greens Market",
+      rating: 4.3,
+      location: "ind",
+      image: "https://images.unsplash.com/photo-1582515073490-39981397b66a?auto=format&fit=crop&q=80&w=300&h=300",
+      organic: true,
+      available: 150,
+    },
+    {
+      id: 4,
+      name: "Farm Fresh Carrots",
+      price: 129,
+      unit: "kg",
+      seller: "Green Valley Farms",
+      rating: 4.6,
+      location: "ind",
+      image: "https://images.unsplash.com/photo-1564300571419-60fe6a7d3688?auto=format&fit=crop&q=80&w=300&h=300",
+      organic: true,
+      available: 300,
+    },
+    {
+      id: 5,
+      name: "Natural Almonds",
+      price: 899,
+      unit: "kg",
+      seller: "Nutri Farms",
+      rating: 4.8,
+      location: "ind",
+      image: "https://images.unsplash.com/photo-1585238342029-7ac4ea21a64a?auto=format&fit=crop&q=80&w=300&h=300",
+      organic: false,
+      available: 120,
+    },
+    {
+      id: 6,
+      name: "Desi Cow Milk",
+      price: 79,
+      unit: "litre",
+      seller: "Healthy Dairy",
+      rating: 4.9,
+      location: "ind",
+      image: "https://images.unsplash.com/photo-1561715276-d4e646f4a2f5?auto=format&fit=crop&q=80&w=300&h=300",
+      organic: true,
+      available: 1000,
+    },
+    {
+      id: 7,
+      name: "Free-Range Brown Eggs",
+      price: 199,
+      unit: "dozen",
+      seller: "Poultry Fresh",
+      rating: 4.7,
+      location: "ind",
+      image: "https://images.unsplash.com/photo-1612015998173-9d94cf9826c6?auto=format&fit=crop&q=80&w=300&h=300",
+      organic: true,
+      available: 400,
+    },
+    {
+      id: 8,
+      name: "Pure Desi Ghee",
+      price: 1499,
+      unit: "kg",
+      seller: "Organic Kitchen",
+      rating: 4.9,
+      location: "ind",
+      image: "https://images.unsplash.com/photo-1617098888151-d0b4b0cc8b6e?auto=format&fit=crop&q=80&w=300&h=300",
+      organic: true,
+      available: 80,
+    },
+    {
+      id: 9,
+      name: "Himalayan Rock Salt",
+      price: 250,
+      unit: "kg",
+      seller: "Spice Market",
+      rating: 4.5,
+      location: "ind",
+      image: "https://images.unsplash.com/photo-1587049633318-cb20c66c02c8?auto=format&fit=crop&q=80&w=300&h=300",
+      organic: true,
+      available: 300,
+    },
+    {
+      id: 10,
+      name: "Organic Whole Wheat Flour",
+      price: 60,
+      unit: "kg",
+      seller: "Healthy Grains",
+      rating: 4.6,
+      location: "ind",
+      image: "https://images.unsplash.com/photo-1623750114135-4c0d550cfc49?auto=format&fit=crop&q=80&w=300&h=300",
+      organic: true,
+      available: 500,
+    },
+    {
+      id: 11,
+      name: "Fresh Strawberries",
+      price: 350,
+      unit: "kg",
+      seller: "Berry Farms",
+      rating: 4.7,
+      location: "ind",
+      image: "https://images.unsplash.com/photo-1615485299245-919c0b186f94?auto=format&fit=crop&q=80&w=300&h=300",
+      organic: true,
+      available: 150,
+    },
+    {
+      id: 12,
+      name: "Handmade Jaggery",
+      price: 180,
+      unit: "kg",
+      seller: "Natural Sweeteners",
+      rating: 4.6,
+      location: "ind",
+      image: "https://images.unsplash.com/photo-1664327714528-42d6f7403c42?auto=format&fit=crop&q=80&w=300&h=300",
+      organic: true,
+      available: 250,
+    },
+    {
+      id: 13,
+      name: "Organic Basmati Rice",
+      price: 120,
+      unit: "kg",
+      seller: "Healthy Grains",
+      rating: 4.7,
+      location: "ind",
+      image: "https://images.unsplash.com/photo-1617026069143-8b69f4a0aaf1?auto=format&fit=crop&q=80&w=300&h=300",
+      organic: true,
+      available: 600,
+    },
+    {
+      id: 14,
+      name: "Fresh Green Peas",
+      price: 220,
+      unit: "kg",
+      seller: "Farm Direct",
+      rating: 4.4,
+      location: "ind",
+      image: "https://images.unsplash.com/photo-1623320151666-fb5b65e24b9b?auto=format&fit=crop&q=80&w=300&h=300",
+      organic: true,
+      available: 400,
+    },
+    {
+      id: 15,
+      name: "Pure Mustard Oil",
+      price: 299,
+      unit: "litre",
+      seller: "Cold Pressed Oils",
+      rating: 4.8,
+      location: "ind",
+      image: "https://images.unsplash.com/photo-1597189860310-548e61b83c08?auto=format&fit=crop&q=80&w=300&h=300",
+      organic: true,
+      available: 200,
+    },
+    {
+      id: 16,
+      name: "Fresh Basil Leaves",
+      price: 90,
+      unit: "bunch",
+      seller: "Herb Garden",
+      rating: 4.5,
+      location: "ind",
+      image: "https://images.unsplash.com/photo-1582516462669-dc7c36c7e8d4?auto=format&fit=crop&q=80&w=300&h=300",
+      organic: true,
+      available: 180,
+    },
+  
+  
 
 
 
@@ -56,7 +236,7 @@ const products = [
 
 export default function MarketplacePage() {
   const [searchTerm, setSearchTerm] = useState("")
-  const [priceRange, setPriceRange] = useState([0, 100])
+  const [priceRange, setPriceRange] = useState([0, 1000])
   const [selectedCategory, setSelectedCategory] = useState("all")
 
   return (
@@ -99,7 +279,7 @@ export default function MarketplacePage() {
                   <Slider
                     value={priceRange}
                     onValueChange={setPriceRange}
-                    max={100}
+                    max={1000}
                     step={1}
                   />
                   <div className="flex justify-between mt-2 text-sm text-muted-foreground">
