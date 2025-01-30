@@ -5,9 +5,9 @@ import Navbar from "@/components/navbar"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { MessageSquare, Send, Bot, Sun, Cloud, Droplet, Wind } from "lucide-react"
+import { getAIResponse } from "@/app/actions/ai-assistant"
 
 interface Message {
   id: number
@@ -26,6 +26,7 @@ export default function AssistantPage() {
       timestamp: new Date().toLocaleTimeString(),
     },
   ])
+  const [isLoading, setIsLoading] = useState(false)
 
   const weatherData = {
     temperature: "24°C",
@@ -34,8 +35,8 @@ export default function AssistantPage() {
     forecast: "Sunny",
   }
 
-  const handleSend = () => {
-    if (!input.trim()) return
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) return
 
     const newMessage: Message = {
       id: messages.length + 1,
@@ -46,23 +47,35 @@ export default function AssistantPage() {
 
     setMessages([...messages, newMessage])
     setInput("")
+    setIsLoading(true)
 
-    // Simulate AI response
-    setTimeout(() => {
-      const response: Message = {
+    try {
+      const aiResponse = await getAIResponse(input)
+      const responseMessage: Message = {
         id: messages.length + 2,
         type: "assistant",
-        content: "I understand your question. Let me help you with that...",
+        content: aiResponse,
         timestamp: new Date().toLocaleTimeString(),
       }
-      setMessages((prev) => [...prev, response])
-    }, 1000)
+      setMessages((prev) => [...prev, responseMessage])
+    } catch (error) {
+      console.error("Error getting AI response:", error)
+      const errorMessage: Message = {
+        id: messages.length + 2,
+        type: "assistant",
+        content: "I'm sorry, I encountered an error while processing your request. Please try again later.",
+        timestamp: new Date().toLocaleTimeString(),
+      }
+      setMessages((prev) => [...prev, errorMessage])
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      
+
       <main className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold">AI Farming Assistant</h1>
@@ -76,7 +89,7 @@ export default function AssistantPage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <Sun className="h-5 w-5 mr-2" />
-               <span>Temperature</span>
+                  <span>Temperature</span>
                 </div>
                 <span>{weatherData.temperature}</span>
               </div>
@@ -119,26 +132,24 @@ export default function AssistantPage() {
             <ScrollArea className="flex-1 p-4">
               <div className="space-y-4">
                 {messages.map((message) => (
-                  <div
-                    key={message.id}
-                    className={`flex ${
-                      message.type === "user" ? "justify-end" : "justify-start"
-                    }`}
-                  >
+                  <div key={message.id} className={`flex ${message.type === "user" ? "justify-end" : "justify-start"}`}>
                     <div
                       className={`max-w-[80%] rounded-lg p-3 ${
-                        message.type === "user"
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-muted"
+                        message.type === "user" ? "bg-primary text-primary-foreground" : "bg-muted"
                       }`}
                     >
                       <p>{message.content}</p>
-                      <span className="text-xs opacity-70 mt-1 block">
-                        {message.timestamp}
-                      </span>
+                      <span className="text-xs opacity-70 mt-1 block">{message.timestamp}</span>
                     </div>
                   </div>
                 ))}
+                {isLoading && (
+                  <div className="flex justify-start">
+                    <div className="max-w-[80%] rounded-lg p-3 bg-muted">
+                      <p>Thinking...</p>
+                    </div>
+                  </div>
+                )}
               </div>
             </ScrollArea>
 
@@ -149,8 +160,9 @@ export default function AssistantPage() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={(e) => e.key === "Enter" && handleSend()}
+                  disabled={isLoading}
                 />
-                <Button onClick={handleSend}>
+                <Button onClick={handleSend} disabled={isLoading}>
                   <Send className="h-4 w-4" />
                 </Button>
               </div>
@@ -161,3 +173,4 @@ export default function AssistantPage() {
     </div>
   )
 }
+

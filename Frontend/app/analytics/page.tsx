@@ -57,7 +57,7 @@ export default function AnalyticsPage() {
     },
     {
       title: "Average Order Value",
-      value: "₹245",
+      value: "$245",
       trend: "+28.4%",
       icon: BarChart2,
     },
@@ -120,7 +120,10 @@ export default function AnalyticsPage() {
             <Card className="p-4">
               <h3 className="text-lg font-semibold mb-4">Revenue Overview</h3>
               <div className="h-[400px]">
+              <a href="localhost:8501" target="_blank" rel="noopener noreferrer">Analyze ur data</a>
+
                 <ResponsiveContainer width="100%" height="100%">
+                  
                   <LineChart data={salesData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="month" />
