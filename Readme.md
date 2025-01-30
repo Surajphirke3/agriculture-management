@@ -42,7 +42,7 @@ For queries and collaboration, feel free to reach out!
 - omsakhare023@gmail.com 
 - niharkore12@gmail.com 
 - surajphirke3@gmail.com 
-- dhruvkishorjain2508@gmail.com  
+- dhruvkishorjain2508@gmail.com   
 
 📌 **GitHub Repository:** https://github.com/dhruvjaink07/agriculture-management.git
 
